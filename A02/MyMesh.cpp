@@ -509,6 +509,7 @@ void MyMesh::GenerateTorus(float a_fOuterRadius, float a_fInnerRadius, int a_nSu
 		currentAngleA += centerAngleA;
 	}
 
+
 	// Draw to connect between rings
 	for (int k = 0; k < circleTriangles.size(); k++)
 	{
@@ -530,7 +531,8 @@ void MyMesh::GenerateTorus(float a_fOuterRadius, float a_fInnerRadius, int a_nSu
 		{
 			third = third - (a_nSubdivisionsA * a_nSubdivisionsB);
 		}
-		AddQuad(circleTriangles[k], circleTriangles[first], circleTriangles[second], circleTriangles[third]);
+		AddTri(circleTriangles[first], circleTriangles[k], circleTriangles[second]);
+		AddTri(circleTriangles[second], circleTriangles[third], circleTriangles[first]);
 	}
 
 	// Adding information about color
